@@ -52,10 +52,12 @@ function createMap(earthquakes) {
 //   let mapboxUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}';
   let mapboxUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}';  
   let accessToken = 'pk.eyJ1IjoidHJhdmlzZG9lc21hdGgiLCJhIjoiY2poOWNrYjRkMDQ2ejM3cGV1d2xqa2IyeCJ9.34tYWBvPBM_h8_YS3Z7__Q';
-  let lightmap = L.tileLayer(mapboxUrl, {id: 'mapbox.light', maxZoom: 20, accessToken: accessToken});
-  let outdoorsmap = L.tileLayer(mapboxUrl, {id: 'mapbox.run-bike-hike', maxZoom: 20, accessToken: accessToken});
-  let satellitemap = L.tileLayer(mapboxUrl, {id: 'mapbox.streets-satellite', maxZoom: 20, accessToken: accessToken});
+  let lightmap = L.tileLayer(mapboxUrl, {id: 'mapbox/light-v10', maxZoom: 20, accessToken: accessToken});
+  let outdoorsmap = L.tileLayer(mapboxUrl, {id: 'mapbox/outdoors-v11', maxZoom: 20, accessToken: accessToken});
+  // let outdoorsmap = L.tileLayer(mapboxUrl, {id: 'mapbox.run-bike-hike', maxZoom: 20, accessToken: accessToken});
+  let satellitemap = L.tileLayer(mapboxUrl, {id: 'mapbox/satellite-streets-v11', maxZoom: 20, accessToken: accessToken});
 
+  mapbox://styles/mapbox/satellite-v9
   
   var tectonicPlates = new L.LayerGroup();
   d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json", function (plateData) {
@@ -82,7 +84,7 @@ function createMap(earthquakes) {
 
     // Create our map, giving it the lightmap and earthquakes layers to display on load
   var myMap = L.map("map-id", {
-    center: [39.8283, -98.5795],
+    center: [37.0902, -95.7125],
     zoom: 3,
     layers: [lightmap, earthquakes]
   });
